@@ -1,10 +1,10 @@
 [build]
-  functions = "netlify/functions"
+  functions = "./functions"
   publish = "public"
 
 [dev]
   port = 8888
-  functions = "netlify/functions"
+  functions = "./functions"
 
 # Netlify Functions are always available at:
 #   /.netlify/functions/<functionName>
