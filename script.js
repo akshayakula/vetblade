@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
         phoneDigits.forEach((digit, index) => {
             setTimeout(() => {
                 digit.style.transform = 'scale(1.3) translateY(-8px)';
-                digit.style.textShadow = '0 0 80px rgba(75, 93, 35, 1), 0 0 40px rgba(255, 255, 255, 0.8)';
-                digit.style.background = 'rgba(75, 93, 35, 0.4)';
+                digit.style.textShadow = '0 0 80px rgba(37, 99, 235, 1), 0 0 40px rgba(255, 255, 255, 0.8)';
+                digit.style.background = 'rgba(37, 99, 235, 0.4)';
                 
                 setTimeout(() => {
                     digit.style.transform = 'scale(1) translateY(0)';
-                    digit.style.textShadow = '0 0 40px rgba(255, 255, 255, 0.5), 0 0 20px rgba(75, 93, 35, 0.8)';
-                    digit.style.background = 'rgba(75, 93, 35, 0.1)';
+                    digit.style.textShadow = '0 0 40px rgba(255, 255, 255, 0.5), 0 0 20px rgba(37, 99, 235, 0.8)';
+                    digit.style.background = 'rgba(37, 99, 235, 0.1)';
                 }, 400);
             }, index * 120);
         });
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
     phoneDigits.forEach((digit, index) => {
         digit.addEventListener('mouseenter', function() {
             this.style.transform = 'scale(1.2) translateY(-8px)';
-            this.style.textShadow = '0 0 100px rgba(75, 93, 35, 1), 0 0 60px rgba(255, 255, 255, 1)';
-            this.style.background = 'rgba(75, 93, 35, 0.4)';
+            this.style.textShadow = '0 0 100px rgba(37, 99, 235, 1), 0 0 60px rgba(255, 255, 255, 1)';
+            this.style.background = 'rgba(37, 99, 235, 0.4)';
             this.style.borderRadius = '6px';
             
             // Create military ripple effect
@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         digit.addEventListener('mouseleave', function() {
             this.style.transform = 'scale(1) translateY(0)';
-            this.style.textShadow = '0 0 40px rgba(255, 255, 255, 0.5), 0 0 20px rgba(75, 93, 35, 0.8)';
-            this.style.background = 'rgba(75, 93, 35, 0.1)';
+            this.style.textShadow = '0 0 40px rgba(255, 255, 255, 0.5), 0 0 20px rgba(37, 99, 235, 0.8)';
+            this.style.background = 'rgba(37, 99, 235, 0.1)';
         });
         
         // Military click effect
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.transform = 'scale(1.15)';
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
-                    this.style.background = 'rgba(75, 93, 35, 0.1)';
+                    this.style.background = 'rgba(37, 99, 235, 0.1)';
                 }, 150);
             }, 100);
         });
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ripple.className = 'military-ripple';
         ripple.style.position = 'absolute';
         ripple.style.borderRadius = '50%';
-        ripple.style.background = 'radial-gradient(circle, rgba(75, 93, 35, 0.4), transparent)';
+        ripple.style.background = 'radial-gradient(circle, rgba(37, 99, 235, 0.4), transparent)';
         ripple.style.transform = 'scale(0)';
         ripple.style.animation = 'militaryRipple 0.8s linear';
         ripple.style.pointerEvents = 'none';
@@ -124,12 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
     callButton.addEventListener('click', function() {
         // Create military calling animation
         this.style.transform = 'scale(0.92)';
-        this.style.background = 'linear-gradient(135deg, rgba(75, 93, 35, 0.8), rgba(30, 58, 138, 0.6))';
-        this.style.boxShadow = '0 0 30px rgba(75, 93, 35, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.3)';
+        this.style.background = 'linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(30, 58, 138, 0.6))';
+        this.style.boxShadow = '0 0 30px rgba(37, 99, 235, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.3)';
         
         setTimeout(() => {
             this.style.transform = 'scale(1.02)';
-            this.style.background = 'linear-gradient(135deg, rgba(75, 93, 35, 0.3), rgba(53, 94, 59, 0.3))';
+            this.style.background = 'linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(53, 94, 59, 0.3))';
             this.style.boxShadow = 'var(--tactical-shadow)';
             setTimeout(() => {
                 this.style.transform = 'scale(1)';
@@ -155,13 +155,13 @@ document.addEventListener('DOMContentLoaded', function() {
             top: '20px',
             right: '20px',
             background: type === 'calling' ? 
-                'linear-gradient(135deg, rgba(75, 93, 35, 0.95), rgba(30, 58, 138, 0.8))' : 
-                'linear-gradient(135deg, rgba(75, 93, 35, 0.9), rgba(0, 0, 0, 0.8))',
+                'linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(30, 58, 138, 0.8))' : 
+                'linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(0, 0, 0, 0.8))',
             color: 'white',
             padding: '15px 25px',
             borderRadius: '8px',
-            border: `2px solid ${type === 'calling' ? '#ffd700' : '#4a5d23'}`,
-            boxShadow: '0 0 25px rgba(75, 93, 35, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3)',
+            border: `2px solid ${type === 'calling' ? '#ffd700' : '#2563eb'}`,
+            boxShadow: '0 0 25px rgba(37, 99, 235, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3)',
             zIndex: '1000',
             transform: 'translateX(100%)',
             transition: 'transform 0.4s ease',
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const rotateY = moveX * 0.05;
         
         this.style.transform = `translate(${moveX}px, ${moveY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
-        this.style.boxShadow = 'var(--tactical-shadow), 0 0 30px rgba(75, 93, 35, 0.4)';
+        this.style.boxShadow = 'var(--tactical-shadow), 0 0 30px rgba(37, 99, 235, 0.4)';
     });
     
     phoneFrame.addEventListener('mouseleave', function() {
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Military pulse rings dynamic color cycling
     const pulseRings = document.querySelectorAll('.pulse-ring');
     const militaryColors = [
-        'rgba(75, 93, 35, 0.5)',   // Military green
+        'rgba(37, 99, 235, 0.5)',   // Tactical blue
         'rgba(30, 58, 138, 0.4)',  // Patriot blue  
         'rgba(220, 38, 38, 0.4)',  // Patriot red
         'rgba(255, 215, 0, 0.3)'   // Military gold
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     militaryCards.forEach((card, index) => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-12px) scale(1.03)';
-            this.style.boxShadow = '0 0 40px rgba(75, 93, 35, 0.6), var(--tactical-shadow)';
+            this.style.boxShadow = '0 0 40px rgba(37, 99, 235, 0.6), var(--tactical-shadow)';
             
             // Add tactical scan line effect
             const scanLine = document.createElement('div');
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
         particle.className = 'military-particle';
         particle.style.position = 'fixed';
         particle.style.fontSize = '8px';
-        particle.style.color = 'rgba(75, 93, 35, 0.6)';
+        particle.style.color = 'rgba(37, 99, 235, 0.6)';
         particle.style.pointerEvents = 'none';
         particle.style.zIndex = '1';
         particle.style.fontWeight = 'bold';
@@ -429,13 +429,13 @@ document.addEventListener('DOMContentLoaded', function() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #4a5d23;
+            color: #2563eb;
             font-family: 'Rajdhani', sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: 0.2em;
             z-index: 10000;
-            text-shadow: 0 0 20px rgba(75, 93, 35, 0.8);
+            text-shadow: 0 0 20px rgba(37, 99, 235, 0.8);
         `;
         document.body.appendChild(loadingDiv);
         

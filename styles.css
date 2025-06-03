@@ -5,21 +5,21 @@
     --tactical-black: #0d1117;
     --pure-white: #ffffff;
     --glow-white: #ffffff;
-    --military-green: #4a5d23;
-    --olive-drab: #6b8e23;
-    --army-green: #355e3b;
+    --tactical-blue: #2563eb;
+    --steel-blue: #1e40af;
+    --navy-blue: #1e3a8a;
     --tactical-gray: #2f363d;
     --patriot-blue: #1e3a8a;
     --patriot-red: #dc2626;
     --military-gold: #ffd700;
     --warning-amber: #f59e0b;
-    --accent-green: rgba(75, 93, 35, 0.3);
-    --accent-blue: rgba(30, 58, 138, 0.1);
+    --accent-blue: rgba(37, 99, 235, 0.3);
+    --accent-blue-light: rgba(30, 58, 138, 0.1);
     --accent-red: rgba(220, 38, 38, 0.1);
     --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.3);
     --shadow-glow-strong: 0 0 40px rgba(255, 255, 255, 0.5);
     --shadow-glow-intense: 0 0 60px rgba(255, 255, 255, 0.7);
-    --military-glow: 0 0 20px rgba(75, 93, 35, 0.4);
+    --tactical-glow: 0 0 20px rgba(37, 99, 235, 0.4);
     --tactical-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -73,7 +73,7 @@ body {
 }
 
 .military-dot {
-    background: radial-gradient(circle, var(--olive-drab) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--steel-blue) 0%, transparent 70%);
     border-radius: 50%;
 }
 
@@ -92,7 +92,7 @@ body {
 }
 
 .military-hex {
-    background: var(--army-green);
+    background: var(--steel-blue);
     clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
     width: 10px;
     height: 8px;
@@ -149,15 +149,15 @@ body {
     z-index: 10;
     padding: 2rem 2rem 1rem;
     text-align: center;
-    background: linear-gradient(to bottom, rgba(75, 93, 35, 0.1), transparent);
+    background: linear-gradient(to bottom, rgba(37, 99, 235, 0.1), transparent);
 }
 
 .military-badge {
     position: relative;
     display: inline-block;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, rgba(75, 93, 35, 0.2), rgba(53, 94, 59, 0.2));
-    border: 2px solid var(--military-green);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(53, 94, 59, 0.2));
+    border: 2px solid var(--tactical-blue);
     border-radius: 8px;
     box-shadow: var(--tactical-shadow);
 }
@@ -167,13 +167,13 @@ body {
     font-size: 2.8rem;
     font-weight: 900;
     letter-spacing: 0.3em;
-    text-shadow: var(--shadow-glow), 0 0 40px var(--military-green);
+    text-shadow: var(--shadow-glow), 0 0 40px var(--tactical-blue);
     margin: 0;
 }
 
 .logo-highlight {
-    color: var(--military-green);
-    text-shadow: 0 0 30px rgba(75, 93, 35, 0.8);
+    color: var(--tactical-blue);
+    text-shadow: 0 0 30px rgba(37, 99, 235, 0.8);
 }
 
 .classification-bar {
@@ -184,7 +184,7 @@ body {
     color: var(--military-gold);
     margin-top: 0.5rem;
     text-transform: uppercase;
-    border-top: 1px solid var(--military-green);
+    border-top: 1px solid var(--tactical-blue);
     padding-top: 0.5rem;
 }
 
@@ -238,10 +238,10 @@ body {
     position: relative;
     display: inline-block;
     padding: 2.5rem;
-    border: 3px solid var(--military-green);
+    border: 3px solid var(--tactical-blue);
     border-radius: 15px;
     background: linear-gradient(135deg, 
-        rgba(75, 93, 35, 0.1), 
+        rgba(37, 99, 235, 0.1), 
         rgba(53, 94, 59, 0.05), 
         rgba(0, 0, 0, 0.3));
     backdrop-filter: blur(15px);
@@ -257,10 +257,10 @@ body {
     right: -1px;
     bottom: -1px;
     background: linear-gradient(45deg, 
-        var(--military-green), 
+        var(--tactical-blue), 
         var(--patriot-blue), 
         var(--patriot-red), 
-        var(--military-green));
+        var(--tactical-blue));
     border-radius: 16px;
     z-index: -2;
     opacity: 0.6;
@@ -285,8 +285,8 @@ body {
     right: 0;
     bottom: 0;
     background-image: 
-        linear-gradient(rgba(75, 93, 35, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(75, 93, 35, 0.1) 1px, transparent 1px);
+        linear-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
     border-radius: 15px;
     pointer-events: none;
@@ -308,18 +308,18 @@ body {
 
 .phone-digit {
     display: inline-block;
-    text-shadow: var(--shadow-glow-strong), 0 0 20px var(--military-green);
+    text-shadow: var(--shadow-glow-strong), 0 0 20px var(--tactical-blue);
     animation: digitGlow 2.5s ease-in-out infinite alternate;
     transition: all 0.3s ease;
     padding: 0.2rem 0.1rem;
     border-radius: 4px;
-    background: rgba(75, 93, 35, 0.1);
+    background: rgba(37, 99, 235, 0.1);
 }
 
 .phone-digit:hover {
     transform: scale(1.15) translateY(-3px);
-    text-shadow: var(--shadow-glow-intense), 0 0 40px var(--military-green);
-    background: rgba(75, 93, 35, 0.3);
+    text-shadow: var(--shadow-glow-intense), 0 0 40px var(--tactical-blue);
+    background: rgba(37, 99, 235, 0.3);
 }
 
 .mission-status {
@@ -359,7 +359,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 3px solid rgba(75, 93, 35, 0.4);
+    border: 6px solid rgba(37, 99, 235, 0.4);
     border-radius: 50%;
     min-width: 80px;
     min-height: 80px;
@@ -369,17 +369,20 @@ body {
 
 .pulse-ring:nth-child(1) {
     animation-delay: 0s;
-    border-color: rgba(75, 93, 35, 0.5);
+    border-color: rgba(37, 99, 235, 0.5);
+    border-width: 6px;
 }
 
 .pulse-ring:nth-child(2) {
     animation-delay: 1.3s;
     border-color: rgba(30, 58, 138, 0.4);
+    border-width: 5px;
 }
 
 .pulse-ring:nth-child(3) {
     animation-delay: 2.6s;
     border-color: rgba(220, 38, 38, 0.4);
+    border-width: 4px;
 }
 
 @keyframes militaryPulse {
@@ -387,16 +390,19 @@ body {
         width: 80px;
         height: 80px;
         opacity: 0.8;
-        box-shadow: 0 0 20px currentColor;
+        box-shadow: 0 0 30px currentColor;
+        border-width: 6px;
     }
     70% {
         opacity: 0.2;
+        border-width: 3px;
     }
     100% {
         width: 800px;
         height: 800px;
         opacity: 0;
-        box-shadow: 0 0 60px currentColor;
+        box-shadow: 0 0 80px currentColor;
+        border-width: 0px;
     }
 }
 
@@ -409,8 +415,8 @@ body {
     margin: 3rem auto;
     line-height: 1.8;
     padding: 1.5rem;
-    background: rgba(75, 93, 35, 0.1);
-    border-left: 4px solid var(--military-green);
+    background: rgba(37, 99, 235, 0.1);
+    border-left: 4px solid var(--tactical-blue);
     border-radius: 8px;
 }
 
@@ -421,8 +427,8 @@ body {
 
 .military-cta {
     position: relative;
-    background: linear-gradient(135deg, rgba(75, 93, 35, 0.3), rgba(53, 94, 59, 0.3));
-    border: 2px solid var(--military-green);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(53, 94, 59, 0.3));
+    border: 2px solid var(--tactical-blue);
     color: var(--pure-white);
     padding: 1.2rem 3.5rem;
     font-size: 1.1rem;
@@ -439,9 +445,9 @@ body {
 
 .military-cta:hover {
     transform: translateY(-3px);
-    box-shadow: var(--shadow-glow-strong), var(--military-glow);
+    box-shadow: var(--shadow-glow-strong), var(--tactical-glow);
     border-color: var(--military-gold);
-    background: linear-gradient(135deg, rgba(75, 93, 35, 0.5), rgba(53, 94, 59, 0.5));
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.5), rgba(53, 94, 59, 0.5));
 }
 
 .security-notice {
@@ -459,7 +465,7 @@ body {
     position: relative;
     z-index: 10;
     padding: 5rem 2rem;
-    background: linear-gradient(to bottom, transparent, rgba(75, 93, 35, 0.05));
+    background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.05));
 }
 
 .section-header {
@@ -480,23 +486,23 @@ body {
 .tactical-line {
     width: 200px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--military-green), transparent);
+    background: linear-gradient(90deg, transparent, var(--tactical-blue), transparent);
     margin: 0 auto;
 }
 
 .feature-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .military-card {
     background: linear-gradient(135deg, 
-        rgba(75, 93, 35, 0.1), 
+        rgba(37, 99, 235, 0.1), 
         rgba(0, 0, 0, 0.3));
-    border: 2px solid rgba(75, 93, 35, 0.3);
+    border: 2px solid rgba(37, 99, 235, 0.3);
     border-radius: 12px;
     padding: 2.5rem;
     text-align: center;
@@ -524,14 +530,14 @@ body {
 
 .military-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: var(--military-green);
-    box-shadow: var(--military-glow), var(--tactical-shadow);
+    border-color: var(--tactical-blue);
+    box-shadow: var(--tactical-glow), var(--tactical-shadow);
 }
 
 .military-icon {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    filter: drop-shadow(0 0 10px rgba(75, 93, 35, 0.5));
+    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.5));
 }
 
 .military-card h3 {
@@ -562,7 +568,7 @@ body {
 /* Mission Stats */
 .mission-stats {
     padding: 3rem 2rem;
-    background: linear-gradient(135deg, rgba(75, 93, 35, 0.1), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(0, 0, 0, 0.3));
 }
 
 .stats-grid {
@@ -576,16 +582,16 @@ body {
 .stat-item {
     text-align: center;
     padding: 2rem;
-    background: rgba(75, 93, 35, 0.1);
-    border: 1px solid rgba(75, 93, 35, 0.3);
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.3);
     border-radius: 8px;
     transition: all 0.3s ease;
 }
 
 .stat-item:hover {
     transform: translateY(-5px);
-    border-color: var(--military-green);
-    box-shadow: var(--military-glow);
+    border-color: var(--tactical-blue);
+    box-shadow: var(--tactical-glow);
 }
 
 .stat-number {
@@ -612,8 +618,8 @@ body {
     z-index: 10;
     text-align: center;
     padding: 3rem 2rem;
-    border-top: 2px solid var(--military-green);
-    background: linear-gradient(135deg, rgba(75, 93, 35, 0.2), rgba(0, 0, 0, 0.5));
+    border-top: 2px solid var(--tactical-blue);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(0, 0, 0, 0.5));
 }
 
 .footer-content p {
@@ -633,6 +639,13 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .feature-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .logo-text {
         font-size: 2rem;
@@ -664,6 +677,11 @@ body {
     .section-header h3 {
         font-size: 2rem;
     }
+    
+    .feature-cards {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -675,10 +693,6 @@ body {
     
     .phone-space {
         display: none;
-    }
-    
-    .feature-cards {
-        grid-template-columns: 1fr;
     }
     
     .stats-grid {
