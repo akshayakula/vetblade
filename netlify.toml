@@ -1,15 +1,12 @@
 [build]
-  functions = "./functions"
-  publish = "public"
+  functions = "functions"
 
+[functions]
+  node_bundler = "esbuild"
+  
 [dev]
   port = 8888
-  functions = "./functions"
-
-# Netlify Functions are always available at:
-#   /.netlify/functions/<functionName>
-# Example: http://localhost:8888/.netlify/functions/send-email
-
+  
 [[headers]]
   for = "/*"
   [headers.values]
@@ -23,8 +20,4 @@
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Headers = "Content-Type, Authorization"
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
