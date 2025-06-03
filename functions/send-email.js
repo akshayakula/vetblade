@@ -18,11 +18,11 @@ exports.handler = async function(event, context) {
     };
   }
 
-  const { to, subject, text } = data;
-  if (!to || !subject || !text) {
+  const { text } = data;
+  if (!text) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: 'Missing required fields: to, subject, text' })
+      body: JSON.stringify({ error: 'Missing required field: text' })
     };
   }
 
@@ -36,8 +36,8 @@ exports.handler = async function(event, context) {
 
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to,
-    subject,
+    to: 'akulaakshay30@gmail.com',
+    subject: 'Veterans Forge Interest',
     text
   };
 
