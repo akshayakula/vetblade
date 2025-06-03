@@ -13,18 +13,31 @@ exports.handler = async function(event, context) {
     data = JSON.parse(event.body);
     console.log('Received request body:', data);
   } catch (err) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: 'Invalid JSON' })
-    };
+    data = {};
+    console.log('No or invalid JSON body received. Proceeding with empty data.');
   }
 
-  const { text } = data;
-  if (!text) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: 'Missing required field: text' })
-    };
+  // Compose the email body from all possible fields, even if missing
+  const fields = [
+    'first_name',
+    'last_name',
+    'email',
+    'military_status',
+    'area_of_interest',
+    'relevant_skills',
+    'time_commitment',
+    'preferred_volunteering_days',
+    'additional_info',
+    'text'
+  ];
+  let emailBody = '';
+  for (const field of fields) {
+    if (data[field]) {
+      emailBody += `${field.replace(/_/g, ' ')}: ${data[field]}\n`;
+    }
+  }
+  if (!emailBody) {
+    emailBody = 'No data provided.';
   }
 
   const transporter = nodemailer.createTransport({
@@ -39,7 +52,7 @@ exports.handler = async function(event, context) {
     from: process.env.GMAIL_USER,
     to: 'akulaakshay30@gmail.com',
     subject: 'Veterans Forge Interest',
-    text
+    text: emailBody
   };
 
   try {
