@@ -1,0 +1,23 @@
+{
+  "name": "vetblade",
+  "version": "1.0.0",
+  "description": "A stunning, interactive website for VetBlade AI Voice Agent featuring beautiful animations, glowing effects, and a black/white color scheme with subtle patriotic accents.",
+  "homepage": "https://github.com/akshayakula/vetblade#readme",
+  "bugs": {
+    "url": "https://github.com/akshayakula/vetblade/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshayakula/vetblade.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.3"
+  }
+}
