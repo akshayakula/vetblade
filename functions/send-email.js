@@ -11,6 +11,7 @@ exports.handler = async function(event, context) {
   let data;
   try {
     data = JSON.parse(event.body);
+    console.log('Received request body:', data);
   } catch (err) {
     return {
       statusCode: 400,
