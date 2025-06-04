@@ -11,12 +11,18 @@ exports.handler = async function(event, context) {
   }
 
   try {
-    // Scan for keys with prefix rucksack:
-    const scanRes = await fetch(`${redisUrl}/scan/0?match=rucksack:*&count=100`, {
-      headers: { Authorization: `Bearer ${redisToken}` }
-    });
-    const scanJson = await scanRes.json();
-    const keys = scanJson.data || [];
+    // Scan for keys with prefix 'rucksack:' across all pages
+    let cursor = '0';
+    const keys = [];
+    do {
+      const scanRes = await fetch(`${redisUrl}/scan/${cursor}?match=rucksack:*&count=100`, {
+        headers: { Authorization: `Bearer ${redisToken}` }
+      });
+      const scanJson = await scanRes.json();
+      const data = scanJson.data || [];
+      keys.push(...data);
+      cursor = scanJson.cursor;
+    } while (cursor !== '0');
 
     // Fetch each key's value
     const items = [];
