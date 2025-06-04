@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const list = document.getElementById('rucksackList');
+    const regList = document.getElementById('rucksackListRegister');
     if (list) {
         fetch('/.netlify/functions/get-rucksack')
             .then(res => res.json())
@@ -14,7 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p><a href="${item.website}" target="_blank">${item.website}</a></p>
                         <p>Phone: ${item.phone}</p>
                     `;
+                    // Append to main list
                     list.appendChild(card);
+                    // Also append to register section if present
+                    if (regList) {
+                        const regCard = card.cloneNode(true);
+                        // Clear animation delay for register list
+                        regCard.style.animationDelay = '';
+                        regList.appendChild(regCard);
+                    }
                 });
             })
             .catch(err => console.log('Error fetching rucksack:', err));
