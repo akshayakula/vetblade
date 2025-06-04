@@ -471,4 +471,17 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('orgPhone').value = '';
         });
     }
+
+    // Show Rucksack section when CTA clicked
+    const showBtn = document.getElementById('showRucksackBtn');
+    if (showBtn) {
+        showBtn.addEventListener('click', () => {
+            const section = document.getElementById('rucksackSection');
+            if (section) {
+                section.classList.remove('hidden');
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
 }); 

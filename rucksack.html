@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetBlade Veterans Rucksack Registry</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-element military-star" data-speed="2"></div>
+        <div class="floating-element military-dot" data-speed="3"></div>
+        <div class="floating-element military-cross" data-speed="1.5"></div>
+        <div class="floating-element military-diamond" data-speed="2.5"></div>
+        <div class="floating-element military-hex" data-speed="1.8"></div>
+    </div>
+
+    <header class="header">
+        <div class="logo">
+            <div class="military-badge">
+                <h1 class="logo-text">VET<span class="logo-highlight">BLADE</span></h1>
+                <div class="classification-bar">VETERANS RUCKSACK REGISTRY</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="cta-section">
+            <button id="showRegisterBtn" class="cta-button military-cta">
+                <span class="button-text">REGISTER YOUR SERVICE</span>
+                <div class="button-glow"></div>
+            </button>
+        </div>
+
+        <section class="features military-features">
+            <div id="rucksackList" class="rucksack-list"></div>
+        </section>
+
+        <section id="registerSection" class="rucksack-section military-features hidden">
+            <div class="section-header">
+                <h3>REGISTER YOUR SERVICE</h3>
+                <div class="tactical-line"></div>
+            </div>
+            <div class="register-form">
+                <input type="text" id="orgName" placeholder="Organization Name">
+                <input type="url" id="orgWebsite" placeholder="Website URL">
+                <input type="tel" id="orgPhone" placeholder="Phone Number">
+                <button id="registerService" class="military-cta">REGISTER SERVICE</button>
+            </div>
+            <div id="rucksackListRegister" class="rucksack-list"></div>
+        </section>
+    </main>
+
+    <footer class="footer military-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 VetBlade. Serving Those Who Served.</p>
+            <div class="military-motto">SEMPER PARATUS • ALWAYS READY</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="rucksack.js"></script>
+</body>
+</html> 

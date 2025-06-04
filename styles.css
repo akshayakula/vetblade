@@ -705,4 +705,7 @@ body {
 }
 @keyframes cardFadeIn {
     to { opacity: 1; transform: translateY(0); }
-} 
+}
+
+/* Utility class to hide elements */
+.hidden { display: none !important; } 
