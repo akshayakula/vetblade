@@ -18,6 +18,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "nodemailer": "^7.0.3"
+    "nodemailer": "^7.0.3",
+    "pdf-lib": "^1.17.1",
+    "axios": "^1.4.0",
+    "openai": "^4.2.1"
   }
 }
