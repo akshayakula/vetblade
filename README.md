@@ -1,4 +1,6 @@
 # VetBlade AI Voice Agent Website
+## Scraper and Task Repo: https://github.com/akshayakula/blade_scraper
+
 
 A stunning, interactive website for VetBlade AI Voice Agent featuring beautiful animations, glowing effects, and a black/white color scheme with subtle patriotic accents.
 
