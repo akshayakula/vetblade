@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const list = document.getElementById('rucksackList');
+    const regList = document.getElementById('rucksackListRegister');
     if (list) {
         fetch('/.netlify/functions/get-rucksack')
             .then(res => res.json())
@@ -14,7 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p><a href="${item.website}" target="_blank">${item.website}</a></p>
                         <p>Phone: ${item.phone}</p>
                     `;
+                    // Append to main list
                     list.appendChild(card);
+                    // Also append to register section if present
+                    if (regList) {
+                        const regCard = card.cloneNode(true);
+                        // Clear animation delay for register list
+                        regCard.style.animationDelay = '';
+                        regList.appendChild(regCard);
+                    }
                 });
             })
             .catch(err => console.log('Error fetching rucksack:', err));
@@ -33,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reuse registration logic from script.js: new entries append to rucksackListRegister
     const registerBtn = document.getElementById('registerService');
     if (registerBtn) {
-        registerBtn.addEventListener('click', () => {
+        registerBtn.addEventListener('click', async () => {
             const name = document.getElementById('orgName').value.trim();
             const website = document.getElementById('orgWebsite').value.trim();
             const phone = document.getElementById('orgPhone').value.trim();
@@ -41,21 +50,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMilitaryNotification('🔴 Please fill in all fields', 'error');
                 return;
             }
-            const card = document.createElement('div');
-            card.className = 'rucksack-card';
-            card.innerHTML = `
-                <div class="feature-icon military-icon">🎒</div>
-                <h3>${name}</h3>
-                <p><a href="${website}" target="_blank">${website}</a></p>
-                <p>Phone: ${phone}</p>
-            `;
-            const container = document.getElementById('rucksackListRegister');
-            container.appendChild(card);
-            showMilitaryNotification('✔️ Service registered locally', 'success');
-            // Reset form
-            document.getElementById('orgName').value = '';
-            document.getElementById('orgWebsite').value = '';
-            document.getElementById('orgPhone').value = '';
+            try {
+                const response = await fetch('/.netlify/functions/add-rucksack', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, website, phone })
+                });
+                const result = await response.json();
+                if (!response.ok) {
+                    throw new Error(result.error || 'Error registering service');
+                }
+                const card = document.createElement('div');
+                card.className = 'rucksack-card';
+                card.innerHTML = `
+                    <div class="feature-icon military-icon">🎒</div>
+                    <h3>${result.name}</h3>
+                    <p><a href="${result.website}" target="_blank">${result.website}</a></p>
+                    <p>Phone: ${result.phone}</p>
+                `;
+                // Append to register section
+                const regContainer = document.getElementById('rucksackListRegister');
+                regContainer.appendChild(card);
+                // Also append to main listing
+                const mainList = document.getElementById('rucksackList');
+                if (mainList) {
+                    mainList.appendChild(card.cloneNode(true));
+                }
+                showMilitaryNotification('✔️ Service registered', 'success');
+                // Reset form
+                document.getElementById('orgName').value = '';
+                document.getElementById('orgWebsite').value = '';
+                document.getElementById('orgPhone').value = '';
+            } catch (err) {
+                showMilitaryNotification(`🔴 ${err.message}`, 'error');
+            }
         });
     }
 }); 

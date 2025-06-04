@@ -444,34 +444,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('📞 Secure Line: +1 (866) 498 5013');
     console.log('🎯 Mission Status: READY TO SERVE');
 
-    // Veterans Rucksack registration logic
-    const registerBtn = document.getElementById('registerService');
-    if (registerBtn) {
-        registerBtn.addEventListener('click', () => {
-            const name = document.getElementById('orgName').value.trim();
-            const website = document.getElementById('orgWebsite').value.trim();
-            const phone = document.getElementById('orgPhone').value.trim();
-            if (!name || !website || !phone) {
-                showMilitaryNotification('🔴 Please fill in all fields to register your service', 'error');
-                return;
-            }
-            const card = document.createElement('div');
-            card.className = 'rucksack-card';
-            card.innerHTML = `
-                <div class="feature-icon military-icon">🎒</div>
-                <h3>${name}</h3>
-                <p><a href="${website}" target="_blank">${website}</a></p>
-                <p>Phone: ${phone}</p>
-            `;
-            const list = document.getElementById('rucksackList');
-            list.appendChild(card);
-            showMilitaryNotification('✔️ Service registered', 'success');
-            document.getElementById('orgName').value = '';
-            document.getElementById('orgWebsite').value = '';
-            document.getElementById('orgPhone').value = '';
-        });
-    }
-
     // Show Rucksack section when CTA clicked
     const showBtn = document.getElementById('showRucksackBtn');
     if (showBtn) {
