@@ -399,6 +399,11 @@ body {
     opacity: 0.8;
 }
 
+/* Space out CTAs */
+.cta-section .military-cta {
+    margin: 0 0.5rem;
+}
+
 /* Mission Capabilities Section */
 .military-features {
     position: relative;
