@@ -345,67 +345,6 @@ body {
     51%, 100% { opacity: 0.3; }
 }
 
-/* Enhanced Pulse Rings with Military Colors */
-.pulse-rings {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-}
-
-.pulse-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 6px solid rgba(37, 99, 235, 0.4);
-    border-radius: 50%;
-    min-width: 80px;
-    min-height: 80px;
-    animation: militaryPulse 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-    pointer-events: none;
-}
-
-.pulse-ring:nth-child(1) {
-    animation-delay: 0s;
-    border-color: rgba(37, 99, 235, 0.5);
-    border-width: 6px;
-}
-
-.pulse-ring:nth-child(2) {
-    animation-delay: 1.3s;
-    border-color: rgba(30, 58, 138, 0.4);
-    border-width: 5px;
-}
-
-.pulse-ring:nth-child(3) {
-    animation-delay: 2.6s;
-    border-color: rgba(220, 38, 38, 0.4);
-    border-width: 4px;
-}
-
-@keyframes militaryPulse {
-    0% {
-        width: 80px;
-        height: 80px;
-        opacity: 0.8;
-        box-shadow: 0 0 30px currentColor;
-        border-width: 6px;
-    }
-    70% {
-        opacity: 0.2;
-        border-width: 3px;
-    }
-    100% {
-        width: 800px;
-        height: 800px;
-        opacity: 0;
-        box-shadow: 0 0 80px currentColor;
-        border-width: 0px;
-    }
-}
-
 /* Military Description */
 .military-description {
     font-size: 1.3rem;
@@ -669,11 +608,6 @@ body {
         padding: 1rem;
     }
     
-    .pulse-ring {
-        max-width: 400px;
-        max-height: 400px;
-    }
-    
     .section-header h3 {
         font-size: 2rem;
     }
@@ -681,6 +615,15 @@ body {
     .feature-cards {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    .register-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .register-form input,
+    .register-form button {
+        width: 100%;
     }
 }
 
@@ -698,9 +641,68 @@ body {
     .stats-grid {
         grid-template-columns: 1fr;
     }
-    
-    .pulse-ring {
-        max-width: 250px;
-        max-height: 250px;
-    }
+}
+
+/* Veterans Rucksack Styles */
+.rucksack-section {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 2rem;
+    background: linear-gradient(to bottom, transparent, rgba(37,99,235,0.05));
+}
+.register-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.register-form input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.8rem 1rem;
+    background: transparent;
+    border: 2px solid var(--tactical-blue);
+    border-radius: 6px;
+    color: var(--pure-white);
+    font-family: 'Inter', sans-serif;
+}
+.register-form input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+.register-form button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    background: var(--tactical-blue);
+    color: var(--pure-white);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+.register-form button:hover {
+    background: var(--patriot-blue);
+}
+.rucksack-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+.rucksack-card {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(0,0,0,0.3));
+    border: 2px solid rgba(37, 99, 235, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--tactical-shadow);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: cardFadeIn 0.5s forwards;
+}
+@keyframes cardFadeIn {
+    to { opacity: 1; transform: translateY(0); }
 } 

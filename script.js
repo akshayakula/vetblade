@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(militaryStyle);
     
-    // Military phone number click to copy functionality
+    // Phone number click to copy functionality
     phoneNumber.addEventListener('click', function() {
-        const phoneText = '+1 833 858 4338';
+        const phoneText = '+1 (866) 498 5013';
         navigator.clipboard.writeText(phoneText).then(() => {
             showMilitaryNotification('📋 CONTACT NUMBER SECURED TO CLIPBOARD', 'success');
         }).catch(() => {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 200);
         
         // Trigger secure phone call
-        window.location.href = 'tel:+18338584338';
+        window.location.href = 'tel:+18664985013';
         
         // Show military calling notification
         showMilitaryNotification('🔗 ESTABLISHING SECURE CONNECTION TO VETBLADE COMMAND', 'calling');
@@ -241,23 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.transform = 'translate(0, 0) rotateX(0) rotateY(0) scale(1)';
         this.style.boxShadow = 'var(--tactical-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
     });
-    
-    // Military pulse rings dynamic color cycling
-    const pulseRings = document.querySelectorAll('.pulse-ring');
-    const militaryColors = [
-        'rgba(37, 99, 235, 0.5)',   // Tactical blue
-        'rgba(30, 58, 138, 0.4)',  // Patriot blue  
-        'rgba(220, 38, 38, 0.4)',  // Patriot red
-        'rgba(255, 215, 0, 0.3)'   // Military gold
-    ];
-    
-    setInterval(() => {
-        pulseRings.forEach((ring, index) => {
-            const colorIndex = (index + Math.floor(Date.now() / 3000)) % militaryColors.length;
-            ring.style.borderColor = militaryColors[colorIndex];
-            ring.style.boxShadow = `0 0 30px ${militaryColors[colorIndex]}`;
-        });
-    }, 3000);
     
     // Military cards tactical hover interaction
     const militaryCards = document.querySelectorAll('.military-card');
@@ -458,8 +441,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    console.log('🎖️ VetBlade Military Systems - OPERATIONAL');
-    console.log('📞 Secure Line: +1 833 858 4338');
-    console.log('🔒 EDIPI Verification Ready');
+    console.log('📞 Secure Line: +1 (866) 498 5013');
     console.log('🎯 Mission Status: READY TO SERVE');
+
+    // Veterans Rucksack registration logic
+    const registerBtn = document.getElementById('registerService');
+    if (registerBtn) {
+        registerBtn.addEventListener('click', () => {
+            const name = document.getElementById('orgName').value.trim();
+            const website = document.getElementById('orgWebsite').value.trim();
+            const phone = document.getElementById('orgPhone').value.trim();
+            if (!name || !website || !phone) {
+                showMilitaryNotification('🔴 Please fill in all fields to register your service', 'error');
+                return;
+            }
+            const card = document.createElement('div');
+            card.className = 'rucksack-card';
+            card.innerHTML = `
+                <div class="feature-icon military-icon">🎒</div>
+                <h3>${name}</h3>
+                <p><a href="${website}" target="_blank">${website}</a></p>
+                <p>Phone: ${phone}</p>
+            `;
+            const list = document.getElementById('rucksackList');
+            list.appendChild(card);
+            showMilitaryNotification('✔️ Service registered', 'success');
+            document.getElementById('orgName').value = '';
+            document.getElementById('orgWebsite').value = '';
+            document.getElementById('orgPhone').value = '';
+        });
+    }
 }); 

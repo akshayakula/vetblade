@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetBlade DEERS Verification</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Page-specific styles */
+        body { overflow-x: hidden; }
+        .verification-container {
+            max-width: 600px;
+            margin: 6rem auto;
+            padding: 2rem;
+            background: rgba(13,17,23,0.8);
+            border: 2px solid var(--patriot-blue);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            color: var(--pure-white);
+            position: relative;
+            z-index: 10;
+        }
+        .verification-loader p {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            color: var(--military-gold);
+        }
+        .loader-ring {
+            width: 80px;
+            height: 80px;
+            border: 6px solid var(--tactical-blue);
+            border-top: 6px solid var(--military-gold);
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .verification-data {
+            display: none;
+            margin-top: 2rem;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            text-align: left;
+        }
+        .data-item {
+            background: rgba(37,99,235,0.1);
+            border-left: 4px solid var(--tactical-blue);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 6px;
+            box-shadow: var(--tactical-shadow);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .verification-container {
+                width: 90%;
+                margin: 4rem auto;
+                padding: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .verification-container {
+                margin: 2rem 1rem;
+                padding: 1rem;
+            }
+            .loader-ring {
+                width: 60px;
+                height: 60px;
+            }
+            .verification-loader p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-element military-star" data-speed="2"></div>
+        <div class="floating-element military-dot" data-speed="3"></div>
+        <div class="floating-element military-cross" data-speed="1.5"></div>
+        <div class="floating-element military-diamond" data-speed="2.5"></div>
+        <div class="floating-element military-hex" data-speed="1.8"></div>
+    </div>
+
+    <header class="header">
+        <div class="logo">
+            <div class="military-badge">
+                <h1 class="logo-text">VET<span class="logo-highlight">BLADE</span></h1>
+                <div class="classification-bar">DEERS VERIFICATION</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="verification-container">
+            <div class="verification-loader">
+                <div class="loader-ring"></div>
+                <p>Verifying EDIPI...</p>
+            </div>
+            <div class="verification-data"></div>
+        </div>
+    </main>
+
+    <script src="verify.js"></script>
+</body>
+</html> 

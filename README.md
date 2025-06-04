@@ -12,10 +12,9 @@ A stunning, interactive website for VetBlade AI Voice Agent featuring beautiful 
 - **Responsive Design**: Works perfectly on all devices
 
 ### 📱 Phone Number Focus
-- **Animated Digits**: Each digit of +1 833 858 4338 has individual animations
+- **Animated Digits**: Each digit of +1 (866) 498 5013 has individual animations
 - **Interactive Hover**: Digits glow and scale on hover with ripple effects
 - **Click to Copy**: Click the phone number to copy to clipboard
-- **Pulse Rings**: Animated concentric rings around the phone number
 - **3D Effects**: Mouse tracking creates subtle 3D movement
 
 ### ✨ Animations & Effects
@@ -139,7 +138,7 @@ Control animation timing in `styles.css`:
 ## 📞 Contact Information
 
 **VetBlade AI Voice Agent**
-- Phone: +1 833 858 4338
+- Phone: +1 (866) 498 5013
 - Available 24/7
 - AI-powered conversations
 
@@ -161,4 +160,4 @@ This website serves as a conversion-focused landing page that:
 
 ---
 
-*Built with ❤️ using vanilla HTML, CSS, and JavaScript* # vetblade
+*Built with ❤️ using vanilla HTML, CSS, and JavaScript*

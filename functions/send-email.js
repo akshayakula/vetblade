@@ -40,6 +40,27 @@ exports.handler = async function(event, context) {
     emailBody = 'No data provided.';
   }
 
+  // Append VAPI webhook data if present
+  emailBody += '\n--- VAPI Data ---\n';
+  if (data.provider) {
+    emailBody += `Provider: ${data.provider}\n`;
+  }
+  if (data.status !== undefined) {
+    emailBody += `Status: ${data.status}\n`;
+  }
+  if (data.smsEnabled !== undefined) {
+    emailBody += `SMS Enabled: ${data.smsEnabled}\n`;
+  }
+  if (data.customer && data.customer.number) {
+    emailBody += `Customer Number: ${data.customer.number}\n`;
+  }
+  if (data.assistant) {
+    const a = data.assistant;
+    emailBody += `Assistant ID: ${a.id || ''}\n`;
+    emailBody += `Assistant Org ID: ${a.orgId || ''}\n`;
+    emailBody += `Assistant Name: ${a.name || ''}\n`;
+  }
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
