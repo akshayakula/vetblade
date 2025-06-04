@@ -39,6 +39,7 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "OPTIONS, POST"
 };
 
+
 exports.handler = async function(event, context) {
   // Handle CORS preflight
   if (event.httpMethod === 'OPTIONS') {

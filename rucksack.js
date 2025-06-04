@@ -2,9 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const list = document.getElementById('rucksackList');
     const regList = document.getElementById('rucksackListRegister');
     if (list) {
+        const loading = document.getElementById('rucksackLoading');
+        if (loading) loading.style.display = 'block';
         fetch('/.netlify/functions/get-rucksack')
             .then(res => res.json())
             .then(items => {
+                if (loading) loading.style.display = 'none';
                 items.forEach((item, idx) => {
                     const card = document.createElement('div');
                     card.className = 'rucksack-card';
@@ -14,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <img src="assets/rucksack.svg" alt="Rucksack Icon">
                         </div>
                         <h3>${item.name}</h3>
-                        ${item.website ? `<p><a href="${item.website}" target="_blank" class="link-icon">🔗</a></p>` : ``}
+                        ${item.website ? `<p><a href="${item.website}" target="_blank" class="link-icon" aria-label="Visit ${item.name} website">🔗</a></p>` : ``}
                         ${item.phone && item.phone !== 'N/A' ? `<p><a href="tel:${item.phone.replace(/[^0-9+]/g, '')}">${item.phone}</a></p>` : ``}
                     `;
                     // Append to main list
@@ -28,7 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             })
-            .catch(err => console.log('Error fetching rucksack:', err));
+            .catch(err => {
+                if (loading) loading.style.display = 'none';
+                console.error('Error fetching rucksack:', err);
+            });
     }
 
     // Reveal registration form
