@@ -32,10 +32,21 @@ const mockDeers = {
   }
 };
 
+// CORS headers
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Methods": "OPTIONS, POST"
+};
+
 exports.handler = async function(event, context) {
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers: corsHeaders, body: '' };
+  }
   console.log('DEBUG: fill-and-email invoked, httpMethod =', event.httpMethod, 'body =', event.body);
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
+    return { statusCode: 405, headers: corsHeaders, body: JSON.stringify({ error: 'Method Not Allowed' }) };
   }
 
   // Parse incoming payload
@@ -60,7 +71,7 @@ exports.handler = async function(event, context) {
   const user = mockDeers[edipi];
   console.log('DEBUG: user record =', user);
   if (!user) {
-    return { statusCode: 404, body: JSON.stringify({ error: 'DEERS data not found for given EDIPI' }) };
+    return { statusCode: 404, headers: corsHeaders, body: JSON.stringify({ error: 'DEERS data not found for given EDIPI' }) };
   }
 
   // Always use default form 21-0538
@@ -79,7 +90,7 @@ exports.handler = async function(event, context) {
     pdfBytes = response.data;
   } catch (err) {
     console.error('ERROR: downloading PDF', err);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Failed to download form PDF' }) };
+    return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: 'Failed to download form PDF' }) };
   }
 
   // Fill out PDF fields
@@ -144,7 +155,7 @@ exports.handler = async function(event, context) {
     console.log('DEBUG: filled PDF bytes length =', filledPdfBytes.length);
   } catch (err) {
     console.error('ERROR: filling PDF form', err);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Failed to fill PDF form' }) };
+    return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: 'Failed to fill PDF form' }) };
   }
 
   // Email the filled PDF
@@ -173,8 +184,8 @@ exports.handler = async function(event, context) {
     console.log('DEBUG: email sent successfully');
   } catch (err) {
     console.error('ERROR: sending email', err);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Failed to send email' }) };
+    return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: 'Failed to send email' }) };
   }
 
-  return { statusCode: 200, body: JSON.stringify({ message: 'Form filled and emailed successfully', formId: selectedForm.id }) };
+  return { statusCode: 200, headers: corsHeaders, body: JSON.stringify({ message: 'Form filled and emailed successfully', formId: selectedForm.id }) };
 };

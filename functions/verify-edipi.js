@@ -24,10 +24,22 @@ const mockDeers = {
   }
 };
 
+// CORS headers
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Methods": "OPTIONS, POST"
+};
+
 // Handler for generating magic verification link for any EDIPI
 exports.handler = async function(event, context) {
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers: corsHeaders, body: '' };
+  }
+  // Only POST supported
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, headers: { 'Allow': 'POST' }, body: JSON.stringify({ error: 'Method Not Allowed' }) };
+    return { statusCode: 405, headers: corsHeaders, body: JSON.stringify({ error: 'Method Not Allowed' }) };
   }
 
   // Parse incoming payload
@@ -35,7 +47,7 @@ exports.handler = async function(event, context) {
   try {
     data = JSON.parse(event.body);
   } catch (err) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON body' }) };
+    return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'Invalid JSON body' }) };
   }
 
   // Determine EDIPI: use provided or fallback to first mock record
@@ -58,7 +70,7 @@ exports.handler = async function(event, context) {
   const emailPass = process.env.EMAIL_PASSWORD || process.env.GMAIL_PASSWORD;
   console.log('DEBUG: email credentials =', { emailUser, passConfigured: !!emailPass });
   if (!emailPass) {
-    return { statusCode: 500, body: JSON.stringify({ error: 'Email password not configured' }) };
+    return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: 'Email password not configured' }) };
   }
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -73,9 +85,9 @@ exports.handler = async function(event, context) {
   try {
     await transporter.sendMail(mailOptions);
     console.log('DEBUG: magic link email sent to', user.email);
-    return { statusCode: 200, body: JSON.stringify({ magicLink, message: 'Magic link sent', email: user.email }) };
+    return { statusCode: 200, headers: corsHeaders, body: JSON.stringify({ magicLink, message: 'Magic link sent', email: user.email }) };
   } catch (err) {
     console.error('ERROR: sending magic link email', err);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Failed to send email', details: err.message }) };
+    return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: 'Failed to send email', details: err.message }) };
   }
 }; 
