@@ -10,10 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     card.className = 'rucksack-card';
                     card.style.animationDelay = `${idx * 0.1}s`;
                     card.innerHTML = `
-                        <div class="feature-icon military-icon">🎒</div>
+                        <div class="feature-icon military-icon">
+                            <img src="assets/rucksack.svg" alt="Rucksack Icon">
+                        </div>
                         <h3>${item.name}</h3>
-                        <p><a href="${item.website}" target="_blank">${item.website}</a></p>
-                        <p>Phone: ${item.phone}</p>
+                        ${item.website ? `<p><a href="${item.website}" target="_blank" class="link-icon">🔗</a></p>` : ``}
+                        ${item.phone && item.phone !== 'N/A' ? `<p><a href="tel:${item.phone.replace(/[^0-9+]/g, '')}">${item.phone}</a></p>` : ``}
                     `;
                     // Append to main list
                     list.appendChild(card);
@@ -63,10 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const card = document.createElement('div');
                 card.className = 'rucksack-card';
                 card.innerHTML = `
-                    <div class="feature-icon military-icon">🎒</div>
+                    <div class="feature-icon military-icon">
+                        <img src="assets/rucksack.svg" alt="Rucksack Icon">
+                    </div>
                     <h3>${result.name}</h3>
-                    <p><a href="${result.website}" target="_blank">${result.website}</a></p>
-                    <p>Phone: ${result.phone}</p>
+                    ${result.website ? `<p><a href="${result.website}" target="_blank" class="link-icon">🔗</a></p>` : ``}
+                    ${result.phone && result.phone !== 'N/A' ? `<p><a href="tel:${result.phone.replace(/[^0-9+]/g, '')}">${result.phone}</a></p>` : ``}
                 `;
                 // Append to register section
                 const regContainer = document.getElementById('rucksackListRegister');

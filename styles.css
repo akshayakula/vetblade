@@ -713,4 +713,70 @@ body {
 }
 
 /* Utility class to hide elements */
-.hidden { display: none !important; } 
+.hidden { display: none !important; }
+
+/* Rucksack icon styling */
+.rucksack-icon {
+    width: 120px;
+    height: auto;
+    margin: 1.5rem auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.7));
+    transition: transform 0.3s ease;
+}
+.rucksack-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Helix icon styling */
+.helix-icon {
+    width: 120px;
+    height: auto;
+    margin: 1.5rem auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.7));
+    transition: transform 0.3s ease;
+}
+.helix-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Link icon styling */
+.link-icon {
+    font-size: 1.4rem;
+    color: var(--tactical-blue);
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5rem 0;
+}
+.link-icon:hover {
+    color: var(--patriot-blue);
+}
+
+/* Registry page layout overrides */
+body.rucksack-page .main-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+body.rucksack-page .cta-section {
+    margin-bottom: 1.5rem;
+}
+
+body.rucksack-page .features {
+    width: 100%;
+}
+
+body.rucksack-page .rucksack-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
+
+body.rucksack-page .rucksack-card {
+    max-width: 360px;
+    padding: 1rem;
+    width: 100%;
+} 
