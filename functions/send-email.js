@@ -1,9 +1,26 @@
 const nodemailer = require('nodemailer');
 
+// CORS headers
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Methods": "OPTIONS, POST"
+};
+
 exports.handler = async function(event, context) {
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: corsHeaders,
+      body: ''
+    };
+  }
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers: corsHeaders,
       body: JSON.stringify({ error: 'Method Not Allowed' })
     };
   }
@@ -80,11 +97,13 @@ exports.handler = async function(event, context) {
     await transporter.sendMail(mailOptions);
     return {
       statusCode: 200,
+      headers: corsHeaders,
       body: JSON.stringify({ message: 'Email sent successfully' })
     };
   } catch (error) {
     return {
       statusCode: 500,
+      headers: corsHeaders,
       body: JSON.stringify({ error: error.message })
     };
   }

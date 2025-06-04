@@ -456,4 +456,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Add navigation for the View Rucksack button
+    const viewBtn = document.getElementById('viewRucksackBtn');
+    if (viewBtn) {
+        viewBtn.addEventListener('click', () => {
+            window.location.href = 'rucksack.html';
+        });
+    }
+
 }); 
